@@ -268,7 +268,7 @@ events have not been supported yet."
      :data (lambda (begin end)
              (cfw:ical-to-calendar url begin end)))))
 
-(defun cfw:open-ical-calendar (url)
+(defun cfw:open-ical-calendar (url &optional color)
   "Simple calendar interface. This command displays just one
 calendar source."
   (interactive)
@@ -276,7 +276,7 @@ calendar source."
     (let ((cp (cfw:create-calendar-component-buffer
                :view 'month
                :contents-sources
-               (list (cfw:ical-create-source "ical" url "#2952a3")))))
+               (list (cfw:ical-create-source "ical" (or url "#2952a3"))))))
       (switch-to-buffer (cfw:cp-get-buffer cp)))))
 
 ;; (progn (eval-current-buffer) (cfw:open-ical-calendar "./ics/test.ics"))
